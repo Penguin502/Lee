@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>upload</title>
+	<link rel="stylesheet" href="/static/common_static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/common_static//css/upload.css">
+	<script src="/static/common_static/js/jquery-1.11.3.js"></script>
+	<script src="/static/common_static/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/faceRec/">首页</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="/faceRec/admin/">总览</a></li>
+					<li><a href="/faceRec/upload/">上传页</a></li>
+                    <li><a href="/faceRec/logs/">日志</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section>
+		{{info.mes}}
+	</section>
+	<script>
+		window.setTimeout(function(){
+
+	window.location.href='http://127.0.0.1:8000';
+},{{ info.sec }});
+	</script>
+</body>
+</html>

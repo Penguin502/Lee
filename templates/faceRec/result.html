@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="/static/common_static/css/bootstrap.min.css">
+	<style>
+		*
+		{
+			margin:0px;
+			padding:0px;
+		}
+		ul
+		{
+			margin:0px;
+		}
+		li
+		{
+			list-style:none;
+		}
+		.con1>div
+		{
+			border:1px solid gray;
+		}
+		.ul1 span
+		{
+			display:inline-block;
+			width:50%;
+			text-align:center;
+			height:100%;
+			padding:5px 0px;
+		}
+		.ul1 li
+		{
+			cursor:pointer;
+			border-bottom:1px solid gray;
+		}
+		.ul1 li:first-child
+		{
+			background:black;
+			color:white;
+		}
+		.ul1 li:last-child
+		{
+			border:none;
+		}
+		.ul1 li:hover
+		{
+			background:black;
+			color:white;
+		}
+
+		.img1
+		{
+			width:120px;
+			height:150px;
+			border:1px solid gray;
+			margin-top:10px;
+		}
+		.info1
+		{
+			border:1px solid gray;
+			margin-top:10px;
+			height:380px;
+		}
+		.infoti
+		{
+			height:30px;
+			line-height:30px;
+		}
+		.info1 label
+		{
+			display:block;
+			height:40px;
+			line-height:40px;
+			margin:0px;
+		}
+		.info
+		{
+			height:40px;
+			line-height:40px;
+		}
+		.info2
+		{
+			padding-top:10px;
+		}
+		.div1
+		{
+			height:400px;
+		}
+		.box
+		{
+			display:none;
+		}
+		.div1>.box:first-child
+		{
+			display:block;
+		}
+	</style>
+	<script src="/static/common_static/js/jquery-1.11.3.js"></script>
+	<script src="/static/common_static/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/faceRec/">首页</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="/faceRec/admin/">总览</a></li>
+					<li><a href="/faceRec/upload/">上传页</a></li>
+                    <li><a href="/faceRec/logs/">日志</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section>
+		<div class="container con1">
+			<div class="col-md-2">
+				<ul class="ul1">
+                    {% for num in nums %}
+{#					<li><span>time1</span><span>任务</span></li>#}
+					<li>num-{{ num }}</li>
+                    {% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-8 col-md-offset-2 div1">
+                {% for info in infos %}
+				<div class="box">
+					<div class="col-md-5 text-center">
+
+						<img src="{{ info.img}}" class="img1">
+						<div>原图</div>
+					</div>
+					<div class="col-md-7 info1">
+						<div class="infoti">个人详情</div>
+						<div class="col-md-5">
+							<label>姓名</label>
+							<label>性别</label>
+							<label>个人信息</label>
+						</div>
+						<div class="col-md-7">
+							<div class="info">{{info.mainMessage.pName}}</div>
+							<div class="info">{{info.mainMessage.pSex}}</div>
+							<div class="info2">{{info.mainMessage.pStatus}}</div>
+                            <div class="info2"><img src="{{ info.mainMessage.pFace }}" height="150px", width="130px"></div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+	<script>
+		$(".ul1>li").click(function(){
+			$(".div1>.box").css("display","none").eq($(this).index()).css("display","block");
+			$(this).css({
+				"background":"black",
+				"color":"white"
+			}).siblings().css({
+				"background":"white",
+				"color":"black"
+			});
+		});
+	</script>
+</body>
+</html>
